@@ -1,57 +1,46 @@
-GameSlot Pro
-Features
-Sports
-Live Demo
-Request Demo
-Sports scheduling software for leagues, tournaments, fields, and courts.
-GameSlot Pro helps directors build cleaner schedules for youth sports leagues, weekend tournaments, multi-site events, field rentals, court schedules, and facility calendars.
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GameSlot Pro</title>
 
-View Live Demo
-Open Full App
-Built for scheduling problems like:
-Multiple age groups and divisions
-Multiple fields, courts, and facilities
-Team conflicts and coach conflicts
-Field blackouts and unavailable times
-Game guarantees and tournament formats
-League registration and team management
-One scheduler for leagues, tournaments, and facilities
-GameSlot Pro is designed as multi-sport scheduling software for organizations that need to manage teams, sites, time slots, fields, courts, divisions, and schedule restrictions without rebuilding spreadsheets from scratch every season.
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #050914;
+    }
 
-League Scheduling
-Build league schedules by age group, division, team count, game length, locations, and available time windows.
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      border: 0;
+    }
+  </style>
+</head>
 
-Tournament Scheduling
-Create tournament schedules with game guarantees, pool-play needs, single-site preferences, and field availability.
+<body>
+  <iframe
+    id="gameslot-app"
+    src="https://gameslotpro.streamlit.app/?embed=true"
+    allow="clipboard-read; clipboard-write; fullscreen">
+  </iframe>
 
-Field & Court Scheduling
-Manage baseball fields, softball fields, soccer fields, basketball courts, volleyball courts, and facility calendars.
+  <script>
+    const params = new URLSearchParams(window.location.search);
 
-Conflict Management
-Track team restrictions, coach conflicts, unavailable times, site preferences, field blackouts, and scheduling warnings.
+    if (params.size > 0) {
+      params.set("embed", "true");
 
-Team Registration
-Collect team names, age groups, divisions, coaches, contact information, preferred sites, and special scheduling notes.
-
-Multi-Site Events
-Plan events across multiple parks, gyms, facilities, fields, and courts while keeping teams organized.
-
-Sports scheduling software
-League scheduling software
-Tournament scheduler
-Field scheduling software
-Court scheduling software
-Multi-site scheduling
-Made for multiple sports
-GameSlot Pro can support scheduling workflows for baseball, softball, soccer, basketball, football, volleyball, and other sports that need reliable team, field, court, and facility scheduling.
-
-Baseball & Softball
-Baseball tournament scheduling software and softball tournament scheduling software for youth teams, divisions, and parks.
-
-Soccer & Football
-Soccer tournament scheduler and football league scheduler for fields, facilities, and multi-team events.
-
-Basketball & Volleyball
-Basketball league scheduler and volleyball tournament scheduler for courts, gyms, and indoor facilities.
-
-Try the live GameSlot Pro app
+      document.getElementById("gameslot-app").src =
+        "https://gameslotpro.streamlit.app/?" + params.toString();
+    }
+  </script>
+</body>
+</html>
