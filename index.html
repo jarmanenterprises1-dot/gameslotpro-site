@@ -1,462 +1,57 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GameSlot Pro | Sports Scheduling Software for Leagues & Tournaments</title>
-  <meta name="description" content="GameSlot Pro is multi-sport scheduling software for leagues, tournaments, fields, courts, and facilities. Schedule baseball, softball, soccer, basketball, football, volleyball, and more.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://getgameslotpro.com/">
+GameSlot Pro
+Features
+Sports
+Live Demo
+Request Demo
+Sports scheduling software for leagues, tournaments, fields, and courts.
+GameSlot Pro helps directors build cleaner schedules for youth sports leagues, weekend tournaments, multi-site events, field rentals, court schedules, and facility calendars.
 
-  <meta property="og:title" content="GameSlot Pro | Sports Scheduling Software">
-  <meta property="og:description" content="Multi-sport scheduling software for leagues, tournaments, fields, courts, and facilities.">
-  <meta property="og:url" content="https://getgameslotpro.com/">
-  <meta property="og:type" content="website">
+View Live Demo
+Open Full App
+Built for scheduling problems like:
+Multiple age groups and divisions
+Multiple fields, courts, and facilities
+Team conflicts and coach conflicts
+Field blackouts and unavailable times
+Game guarantees and tournament formats
+League registration and team management
+One scheduler for leagues, tournaments, and facilities
+GameSlot Pro is designed as multi-sport scheduling software for organizations that need to manage teams, sites, time slots, fields, courts, divisions, and schedule restrictions without rebuilding spreadsheets from scratch every season.
 
-  <style>
-    :root {
-      --navy: #10233f;
-      --blue: #2563eb;
-      --light: #f5f8fc;
-      --text: #182235;
-      --muted: #5e6b7e;
-      --border: #dbe3ef;
-      --white: #ffffff;
-      --green: #16a34a;
-    }
+League Scheduling
+Build league schedules by age group, division, team count, game length, locations, and available time windows.
 
-    * {
-      box-sizing: border-box;
-    }
+Tournament Scheduling
+Create tournament schedules with game guarantees, pool-play needs, single-site preferences, and field availability.
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: var(--light);
-      line-height: 1.6;
-    }
+Field & Court Scheduling
+Manage baseball fields, softball fields, soccer fields, basketball courts, volleyball courts, and facility calendars.
 
-    header {
-      background: var(--navy);
-      color: var(--white);
-      padding: 22px 18px;
-    }
+Conflict Management
+Track team restrictions, coach conflicts, unavailable times, site preferences, field blackouts, and scheduling warnings.
 
-    .wrap {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
+Team Registration
+Collect team names, age groups, divisions, coaches, contact information, preferred sites, and special scheduling notes.
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
+Multi-Site Events
+Plan events across multiple parks, gyms, facilities, fields, and courts while keeping teams organized.
 
-    .brand {
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
+Sports scheduling software
+League scheduling software
+Tournament scheduler
+Field scheduling software
+Court scheduling software
+Multi-site scheduling
+Made for multiple sports
+GameSlot Pro can support scheduling workflows for baseball, softball, soccer, basketball, football, volleyball, and other sports that need reliable team, field, court, and facility scheduling.
 
-    .nav-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      font-size: 15px;
-    }
+Baseball & Softball
+Baseball tournament scheduling software and softball tournament scheduling software for youth teams, divisions, and parks.
 
-    .nav-links a {
-      color: var(--white);
-      text-decoration: none;
-      opacity: 0.92;
-    }
+Soccer & Football
+Soccer tournament scheduler and football league scheduler for fields, facilities, and multi-team events.
 
-    .hero {
-      padding: 72px 18px;
-      background: linear-gradient(135deg, #10233f 0%, #183b73 55%, #2563eb 100%);
-      color: var(--white);
-    }
+Basketball & Volleyball
+Basketball league scheduler and volleyball tournament scheduler for courts, gyms, and indoor facilities.
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 34px;
-      align-items: center;
-    }
-
-    h1 {
-      font-size: clamp(38px, 6vw, 62px);
-      line-height: 1.04;
-      margin: 0 0 20px;
-      letter-spacing: -0.04em;
-    }
-
-    .subtitle {
-      font-size: 21px;
-      max-width: 760px;
-      margin: 0 0 28px;
-      color: #e7eefc;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 26px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 13px 20px;
-      border-radius: 10px;
-      font-weight: 700;
-      text-decoration: none;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: var(--white);
-      color: var(--navy);
-    }
-
-    .btn-secondary {
-      color: var(--white);
-      border-color: rgba(255,255,255,0.65);
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.24);
-      border-radius: 18px;
-      padding: 24px;
-    }
-
-    .hero-card h2 {
-      margin-top: 0;
-      font-size: 22px;
-    }
-
-    .hero-card ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    section {
-      padding: 56px 18px;
-    }
-
-    h2 {
-      font-size: 34px;
-      line-height: 1.15;
-      margin: 0 0 16px;
-      letter-spacing: -0.03em;
-    }
-
-    .lead {
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 860px;
-      margin-top: 0;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 28px;
-    }
-
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 20px;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .keywords {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
-    .tag {
-      background: #e8f0ff;
-      color: #183b73;
-      border: 1px solid #c9dcff;
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .app-frame {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 12px;
-      margin-top: 28px;
-    }
-
-    iframe {
-      width: 100%;
-      min-height: 900px;
-      border: 0;
-      border-radius: 12px;
-      background: var(--white);
-    }
-
-    .cta {
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 18px;
-      padding: 34px;
-      display: flex;
-      justify-content: space-between;
-      gap: 22px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .cta h2 {
-      margin-bottom: 8px;
-    }
-
-    .cta p {
-      color: #e7eefc;
-      margin: 0;
-      max-width: 720px;
-    }
-
-    footer {
-      padding: 32px 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    @media (max-width: 850px) {
-      .hero-grid,
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 42px 18px;
-      }
-
-      iframe {
-        min-height: 760px;
-      }
-    }
-  </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "GameSlot Pro",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "description": "Multi-sport scheduling software for leagues, tournaments, fields, courts, and facilities.",
-    "url": "https://getgameslotpro.com/",
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock"
-    }
-  }
-  </script>
-</head>
-
-<body>
-  <header>
-    <div class="wrap">
-      <nav>
-        <div class="brand">GameSlot Pro</div>
-        <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#sports">Sports</a>
-          <a href="#demo">Live Demo</a>
-          <a href="#contact">Request Demo</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <h1>Sports scheduling software for leagues, tournaments, fields, and courts.</h1>
-          <p class="subtitle">
-            GameSlot Pro helps directors build cleaner schedules for youth sports leagues,
-            weekend tournaments, multi-site events, field rentals, court schedules, and facility calendars.
-          </p>
-          <div class="buttons">
-            <a class="btn btn-primary" href="#demo">View Live Demo</a>
-            <a class="btn btn-secondary" href="https://gameslotpro.streamlit.app" target="_blank" rel="noopener">Open Full App</a>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <h2>Built for scheduling problems like:</h2>
-          <ul>
-            <li>Multiple age groups and divisions</li>
-            <li>Multiple fields, courts, and facilities</li>
-            <li>Team conflicts and coach conflicts</li>
-            <li>Field blackouts and unavailable times</li>
-            <li>Game guarantees and tournament formats</li>
-            <li>League registration and team management</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="features">
-      <div class="wrap">
-        <h2>One scheduler for leagues, tournaments, and facilities</h2>
-        <p class="lead">
-          GameSlot Pro is designed as multi-sport scheduling software for organizations that need to manage
-          teams, sites, time slots, fields, courts, divisions, and schedule restrictions without rebuilding
-          spreadsheets from scratch every season.
-        </p>
-
-        <div class="cards">
-          <div class="card">
-            <h3>League Scheduling</h3>
-            <p>
-              Build league schedules by age group, division, team count, game length, locations, and available time windows.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Tournament Scheduling</h3>
-            <p>
-              Create tournament schedules with game guarantees, pool-play needs, single-site preferences, and field availability.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Field & Court Scheduling</h3>
-            <p>
-              Manage baseball fields, softball fields, soccer fields, basketball courts, volleyball courts, and facility calendars.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Conflict Management</h3>
-            <p>
-              Track team restrictions, coach conflicts, unavailable times, site preferences, field blackouts, and scheduling warnings.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Team Registration</h3>
-            <p>
-              Collect team names, age groups, divisions, coaches, contact information, preferred sites, and special scheduling notes.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Multi-Site Events</h3>
-            <p>
-              Plan events across multiple parks, gyms, facilities, fields, and courts while keeping teams organized.
-            </p>
-          </div>
-        </div>
-
-        <div class="keywords" aria-label="Sports scheduling keywords">
-          <span class="tag">Sports scheduling software</span>
-          <span class="tag">League scheduling software</span>
-          <span class="tag">Tournament scheduler</span>
-          <span class="tag">Field scheduling software</span>
-          <span class="tag">Court scheduling software</span>
-          <span class="tag">Multi-site scheduling</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="sports">
-      <div class="wrap">
-        <h2>Made for multiple sports</h2>
-        <p class="lead">
-          GameSlot Pro can support scheduling workflows for baseball, softball, soccer, basketball, football,
-          volleyball, and other sports that need reliable team, field, court, and facility scheduling.
-        </p>
-
-        <div class="cards">
-          <div class="card">
-            <h3>Baseball & Softball</h3>
-            <p>Baseball tournament scheduling software and softball tournament scheduling software for youth teams, divisions, and parks.</p>
-          </div>
-          <div class="card">
-            <h3>Soccer & Football</h3>
-            <p>Soccer tournament scheduler and football league scheduler for fields, facilities, and multi-team events.</p>
-          </div>
-          <div class="card">
-            <h3>Basketball & Volleyball</h3>
-            <p>Basketball league scheduler and volleyball tournament scheduler for courts, gyms, and indoor facilities.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="demo">
-      <div class="wrap">
-        <h2>Try the live GameSlot Pro app</h2>
-        <p class="lead">
-          Use the live app below to view the scheduling workflow, request a demo, and see how GameSlot Pro
-          can help organize teams, leagues, tournaments, fields, courts, and facilities.
-        </p>
-
-        <div class="buttons">
-          <a class="btn btn-primary" href="https://gameslotpro.streamlit.app" target="_blank" rel="noopener">Open Full App</a>
-        </div>
-
-        <div class="app-frame">
-          <iframe
-            title="GameSlot Pro live scheduling app"
-            src="https://gameslotpro.streamlit.app/?embed=true"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="wrap">
-        <div class="cta">
-          <div>
-            <h2>Need help scheduling a league or tournament?</h2>
-            <p>
-              Request a GameSlot Pro demo for sports scheduling software that can handle leagues,
-              tournaments, field schedules, court schedules, multi-site events, and team registration.
-            </p>
-          </div>
-          <a class="btn btn-primary" href="https://gameslotpro.streamlit.app" target="_blank" rel="noopener">Request Demo</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      © 2026 GameSlot Pro. Multi-sport scheduling software for leagues, tournaments, fields, courts, and facilities.
-    </div>
-  </footer>
-</body>
-</html>
+Try the live GameSlot Pro app
