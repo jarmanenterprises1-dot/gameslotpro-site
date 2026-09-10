@@ -24,12 +24,19 @@ async function startGoogleLogin(env) {
 
   const serviceKey = String(env.SUPABASE_SERVICE_KEY || "").trim();
 
-  if (!supabaseUrl || !serviceKey) {
-    return new Response(
-      "GameSlot Pro Google login is not configured on Cloudflare.",
-      { status: 500 }
-    );
-  }
+ if (!supabaseUrl) {
+  return new Response(
+    "MISSING: SUPABASE_URL",
+    { status: 500 }
+  );
+}
+
+if (!serviceKey) {
+  return new Response(
+    "MISSING: SUPABASE_SERVICE_KEY",
+    { status: 500 }
+  );
+}
 
   const flowId = randomBase64Url(32);
   const codeVerifier = randomBase64Url(64);
