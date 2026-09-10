@@ -24,7 +24,7 @@ async function startGoogleLogin(env) {
 
   const serviceKey = String(env.SUPABASE_SERVICE_KEY || "").trim();
 
- if (!supabaseUrl) {
+if (!supabaseUrl) {
   return new Response(
     "MISSING: SUPABASE_URL",
     { status: 500 }
