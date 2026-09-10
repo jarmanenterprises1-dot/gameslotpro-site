@@ -3,6 +3,17 @@
   "name": "gameslotpro-site",
   "main": "worker.js",
   "compatibility_date": "2026-09-10",
+
+  "vars": {
+    "SUPABASE_URL": "https://esokqqqvfzntehuttiou.supabase.co"
+  },
+
+  "secrets": {
+    "required": [
+      "SUPABASE_SERVICE_KEY"
+    ]
+  },
+
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
