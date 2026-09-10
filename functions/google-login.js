@@ -1,0 +1,91 @@
+// GameSlot Pro - Cloudflare Pages Function
+// File location in the WEBSITE repo: functions/google-login.js
+//
+// Cloudflare Pages route created by this file:
+//   https://getgameslotpro.com/google-login
+//
+// Required Cloudflare Pages environment variables/secrets:
+//   SUPABASE_URL
+//   SUPABASE_SERVICE_KEY
+//
+// Do NOT put the service key directly in this file.
+
+function base64Url(bytes) {
+  let binary = "";
+  for (const byte of bytes) binary += String.fromCharCode(byte);
+
+  return btoa(binary)
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/g, "");
+}
+
+function randomBase64Url(byteLength = 48) {
+  const bytes = new Uint8Array(byteLength);
+  crypto.getRandomValues(bytes);
+  return base64Url(bytes);
+}
+
+export async function onRequestGet(context) {
+  const supabaseUrl = String(context.env.SUPABASE_URL || "")
+    .trim()
+    .replace(/\/+$/, "");
+
+  const serviceKey = String(context.env.SUPABASE_SERVICE_KEY || "").trim();
+
+  if (!supabaseUrl || !serviceKey) {
+    return new Response(
+      "GameSlot Pro Google login is not configured on Cloudflare.",
+      { status: 500 }
+    );
+  }
+
+  const flowId = randomBase64Url(32);
+  const codeVerifier = randomBase64Url(64);
+
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(codeVerifier)
+  );
+  const codeChallenge = base64Url(new Uint8Array(digest));
+
+  const redirectTo =
+    `https://getgameslotpro.com/?customer_login=1` +
+    `&oauth_flow=${encodeURIComponent(flowId)}`;
+
+  const saveFlow = await fetch(
+    `${supabaseUrl}/rest/v1/oauth_login_flows`,
+    {
+      method: "POST",
+      headers: {
+        "apikey": serviceKey,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify({
+        flow_id: flowId,
+        code_verifier: codeVerifier,
+        redirect_to: redirectTo,
+        created_at: new Date().toISOString()
+      })
+    }
+  );
+
+  if (!saveFlow.ok) {
+    const detail = await saveFlow.text();
+    console.error("Could not save OAuth flow:", detail);
+    return new Response(
+      "GameSlot Pro could not start Google login. Please try again.",
+      { status: 500 }
+    );
+  }
+
+  const authUrl = new URL(`${supabaseUrl}/auth/v1/authorize`);
+  authUrl.searchParams.set("provider", "google");
+  authUrl.searchParams.set("redirect_to", redirectTo);
+  authUrl.searchParams.set("code_challenge", codeChallenge);
+  authUrl.searchParams.set("code_challenge_method", "s256");
+  authUrl.searchParams.set("scopes", "openid email profile");
+
+  return Response.redirect(authUrl.toString(), 302);
+}
