@@ -10,12 +10,6 @@
     "SUPABASE_URL": "https://esokqqqvfzntehuttiou.supabase.co"
   },
 
-  "secrets": {
-    "required": [
-      "SUPABASE_SERVICE_KEY"
-    ]
-  },
-
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
