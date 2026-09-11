@@ -1,9 +1,10 @@
 // GameSlot Pro - Cloudflare Worker entrypoint
-// Handles /google-login, then serves the existing static website for everything else.
 
 function base64Url(bytes) {
   let binary = "";
-  for (const byte of bytes) binary += String.fromCharCode(byte);
+  for (const byte of bytes) {
+    binary += String.fromCharCode(byte);
+  }
 
   return btoa(binary)
     .replace(/\+/g, "-")
@@ -24,19 +25,19 @@ async function startGoogleLogin(env) {
 
   const serviceKey = String(env.SUPABASE_SERVICE_KEY || "").trim();
 
-if (!supabaseUrl) {
-  return new Response(
-    "MISSING: SUPABASE_URL",
-    { status: 500 }
-  );
-}
+  if (!supabaseUrl) {
+    return new Response(
+      "MISSING: SUPABASE_URL",
+      { status: 500 }
+    );
+  }
 
-if (!serviceKey) {
-  return new Response(
-    "MISSING: SUPABASE_SERVICE_KEY",
-    { status: 500 }
-  );
-}
+  if (!serviceKey) {
+    return new Response(
+      "MISSING: SUPABASE_SERVICE_KEY",
+      { status: 500 }
+    );
+  }
 
   const flowId = randomBase64Url(32);
   const codeVerifier = randomBase64Url(64);
@@ -46,7 +47,9 @@ if (!serviceKey) {
     new TextEncoder().encode(codeVerifier)
   );
 
-  const codeChallenge = base64Url(new Uint8Array(digest));
+  const codeChallenge = base64Url(
+    new Uint8Array(digest)
+  );
 
   const redirectTo =
     `https://getgameslotpro.com/?customer_login=1` +
@@ -73,22 +76,53 @@ if (!serviceKey) {
 
   if (!saveFlow.ok) {
     const detail = await saveFlow.text();
-    console.error("Could not save OAuth flow:", detail);
 
     return new Response(
-      "GameSlot Pro could not start Google login. Please try again.",
-      { status: 500 }
+      `SUPABASE FLOW SAVE FAILED
+Status: ${saveFlow.status}
+Details: ${detail}`,
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "text/plain"
+        }
+      }
     );
   }
 
-  const authUrl = new URL(`${supabaseUrl}/auth/v1/authorize`);
-  authUrl.searchParams.set("provider", "google");
-  authUrl.searchParams.set("redirect_to", redirectTo);
-  authUrl.searchParams.set("code_challenge", codeChallenge);
-  authUrl.searchParams.set("code_challenge_method", "s256");
-  authUrl.searchParams.set("scopes", "openid email profile");
+  const authUrl = new URL(
+    `${supabaseUrl}/auth/v1/authorize`
+  );
 
-  return Response.redirect(authUrl.toString(), 302);
+  authUrl.searchParams.set(
+    "provider",
+    "google"
+  );
+
+  authUrl.searchParams.set(
+    "redirect_to",
+    redirectTo
+  );
+
+  authUrl.searchParams.set(
+    "code_challenge",
+    codeChallenge
+  );
+
+  authUrl.searchParams.set(
+    "code_challenge_method",
+    "s256"
+  );
+
+  authUrl.searchParams.set(
+    "scopes",
+    "openid email profile"
+  );
+
+  return Response.redirect(
+    authUrl.toString(),
+    302
+  );
 }
 
 export default {
