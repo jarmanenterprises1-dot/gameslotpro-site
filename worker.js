@@ -2,6 +2,7 @@
 
 function base64Url(bytes) {
   let binary = "";
+
   for (const byte of bytes) {
     binary += String.fromCharCode(byte);
   }
@@ -23,7 +24,9 @@ async function startGoogleLogin(env) {
     .trim()
     .replace(/\/+$/, "");
 
-  const serviceKey = String(env.SUPABASE_SERVICE_KEY || "").trim();
+  const serviceKey = String(
+    env.SUPABASE_SERVICE_KEY || ""
+  ).trim();
 
   if (!supabaseUrl) {
     return new Response(
@@ -52,7 +55,7 @@ async function startGoogleLogin(env) {
   );
 
   const redirectTo =
-    `https://getgameslotpro.com/?customer_login=1` +
+    "https://getgameslotpro.com/?customer_login=1" +
     `&oauth_flow=${encodeURIComponent(flowId)}`;
 
   const saveFlow = await fetch(
